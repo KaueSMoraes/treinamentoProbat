@@ -1,0 +1,30 @@
+BLINKER INCREMENTAL OFF
+// BLINKER EXECUTABLE COMPRESS
+// MAP A,S
+
+PACKCODE
+PACKDATA
+
+// If you use Mr. Debug for Windows product
+// search c:\mrdebug\lib\mrd4win.lib
+
+DEFBEGIN
+   name        FiveWin
+   description 'Clipper for Windows library'
+   exetype     Windows 3.1
+   code        moveable discardable preload
+   data        preload moveable
+   stacksize   10000
+   heapsize    1024
+   segment     'PLANKTON_TEXT' nondiscardable
+   segment     'EXTEND_TEXT'   nondiscardable
+   segment     'OM_TEXT'       nondiscardable
+   segment     'OSMEM_TEXT'    nondiscardable
+   segment     'SORTOF_TEXT'   nondiscardable
+   segment     'STACK_TEXT'    nondiscardable
+DEFEND
+
+NOBELL
+
+LIB  Five, FiveC, Objects
+LIB  WinApi, Clipper, Extend, DbfNtx, Terminal
