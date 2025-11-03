@@ -1,0 +1,32 @@
+#include "tlpp-core.th"
+#include "tlpp-probat.th"
+
+using namespace tlpp.probat
+
+@TestFixture()
+class test_max_class
+
+  private data nInt_1     as integer
+  private data nInt_2     as integer
+  private data nInt_max   as integer
+
+  public method new()     constructor
+
+  @Test('aqui deve-se colocar o descritivo sobre o teste') 
+  public method test_Max() 
+
+endclass
+
+method new() class test_max_class
+  ::nInt_1 := 10
+  ::nInt_2 := 20
+return self
+
+method test_Max() class test_max_class
+
+  ::nInt_max := max( ::nInt_1, ::nInt_2 )
+    assertEquals( ::nInt_max, 20      )
+
+return .T. 
+
+

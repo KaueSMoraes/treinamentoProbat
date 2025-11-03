@@ -2,17 +2,43 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"type": "totvs_language_debug",
+			"type": "totvs_language_web_debug",
 			"request": "launch",
-			"name": "TOTVS Language Debug",
+			"name": "Smart Client Web Debug",
 			"program": "${command:AskForProgramName}",
-			"cwb": "${workspaceFolder}",
-			"smartclientBin": "../totvs/bin/smartclient/smartclient.exe",
 			"isMultiSession": true,
+			"smartclientUrl ": "http://localhost:4321",
 			"enableTableSync": true,
-			"extendFeatures": {
-				"charDetails": false
-			}
+			"enableMultiThread": true
+		}
+	],
+	"lastProgramExecuted": "tlpp.probat.run",
+	"lastProgramArguments": [],
+	"lastPrograms": [
+		{
+			"label": "SIGAADV"
+		},
+		{
+			"args": [],
+			"label": "tlpp.probat.gui"
+		},
+		{
+			"args": [],
+			"label": "tlpp.probat.run"
+		},
+		{
+			"label": "tlpp.environment.getIncludesTLPP"
+		},
+		{
+			"args": [],
+			"label": "u_TLPPIncs"
+		},
+		{
+			"label": "U_teste"
+		},
+		{
+			"args": [],
+			"label": "tlpp.probat.discovery"
 		}
 	]
 }
