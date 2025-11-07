@@ -7,12 +7,11 @@
 			"name": "Smart Client Web Debug",
 			"program": "${command:AskForProgramName}",
 			"isMultiSession": true,
-			"smartclientUrl ": "http://localhost:4321",
 			"enableTableSync": true,
 			"enableMultiThread": true
 		}
 	],
-	"lastProgramExecuted": "tlpp.probat.run",
+	"lastProgramExecuted": "<cancel>",
 	"lastProgramArguments": [],
 	"lastPrograms": [
 		{

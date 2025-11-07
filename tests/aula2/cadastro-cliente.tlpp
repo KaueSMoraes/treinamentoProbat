@@ -1,0 +1,82 @@
+#include "tlpp-core.th"
+#include "tlpp-probat.th"
+
+using namespace tlpp.probat
+
+namespace ModuloPedidoVenda
+
+
+@TestFixture()
+class PedidoVenda
+
+    private data cTeste     as character
+    private data lDeuCerto  as logical
+    private data oModel     as object
+    private data oSA1Mod    as object
+
+
+    public method new() constructor
+
+    public method PrepararValoresCadastroDeCliente()
+
+    public method ExecutarCadastroDeCliente()
+
+    @Test('Deve cadastrar um novo cliente com sucesso')
+    public method test_CadastrarCliente()
+
+
+endclass
+
+
+method PrepararValoresCadastroDeCliente class TesteCadastroCliente
+
+    ::cTeste    := "TESTE"
+    ::lDeuCerto := .F.
+
+    RpcSetEnv("99","01")
+    // Carrega o modelo de dados e define a operação de inclusão
+    ::oModel := FWLoadModel("CRMA980")
+    ::oModel:SetOperation(3)
+    ::oModel:Activate()
+
+    // Obtém o modelo dos campos da SA1 e preenche os dados
+    ::oSA1Mod := ::oModel:getModel("SA1MASTER")
+    ::oSA1Mod:setValue("A1_COD",       "001"                  )
+    ::oSA1Mod:setValue("A1_LOJA",      "02"                   )
+    ::oSA1Mod:setValue("A1_NOME",      "ONEINSIGHT TECNOLOGIA")
+    ::oSA1Mod:setValue("A1_NREDUZ",    "ONEINSIGHT TECNOLOGIA")
+    ::oSA1Mod:setValue("A1_END",       "TESTE"                )
+    ::oSA1Mod:setValue("A1_BAIRRO",    ::cTeste               )
+    ::oSA1Mod:setValue("A1_TIPO",      "F"                    )
+    ::oSA1Mod:setValue("A1_EST",       "MT"                   )
+    ::oSA1Mod:setValue("A1_MUN",       "CUIABA"               )
+
+return 
+
+
+method ExecutarCadastroDeCliente() class TesteCadastroCliente
+
+    // Act
+    if ::oModel:VldData()
+       if ::oModel:CommitData()
+            ::lDeuCerto := .T.
+         endif
+    endif
+
+    ::oModel:DeActivate()
+
+return ::lDeuCerto
+
+method test_CadastrarCliente() class TesteCadastroCliente
+
+    // Arrange
+    ::PrepararValoresCadastroDeCliente()
+
+    // Act
+    ::ExecutarCadastroDeCliente()
+    
+    // Assert
+    assertTrue(::lDeuCerto) //PROBAT CONSIDERA QUE ESSE MÉTODO (FUNÇÃO) DEU CERTO QUANDO ASSERT FOR TRUE
+    RpcClearEnv()
+
+return .T.

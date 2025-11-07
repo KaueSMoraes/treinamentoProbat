@@ -27,6 +27,6 @@ method test_Max() class test_max_class
   ::nInt_max := max( ::nInt_1, ::nInt_2 )
     assertEquals( ::nInt_max, 20      )
 
-return .T. 
-
+return .T.
+ 
 
